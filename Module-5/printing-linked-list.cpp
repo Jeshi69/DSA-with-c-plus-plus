@@ -23,5 +23,19 @@ head->next = a;
 a->next = b;
 b->next = c;
 
+Node* tmp = head;
+while(head != NULL) //loop use kore
+{
+    cout << tmp->val<<endl;
+    tmp = tmp->next;
+}
+
+tmp = head;
+while(head != NULL) //loop use kore
+{
+    cout << tmp->val <<endl;
+    tmp = tmp->next;
+}
+
 return 0;
 }
