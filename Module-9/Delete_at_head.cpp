@@ -24,15 +24,18 @@ void print_forward(Node* head)
  }
  cout << endl;
 }
-void print_prev(Node* tail)
+void delete_at_tail(Node* &head,Node* &tail)//duitay dorkar
 {
- Node* tmp = tail;
- while(tmp != NULL)
- {
-    cout << tmp->val<<" ";
-    tmp = tmp->prev;
- }
- cout << endl;
+    Node* deleteNode = tail;
+    tail = tail->prev;
+     delete deleteNode;
+    if(tail == NULL)//tail track
+    {
+        head = NULL;
+        return;
+    }
+    tail->next = NULL;
+   
 }
 int main ()
 { 
@@ -40,14 +43,16 @@ Node * head =new Node(10);
 Node * a = new Node(20);
 Node * tail = new Node(30);
 
-head->next = a;
+head->next = a;//connection
 a->prev = head;
 
 a->next = tail;
 tail->prev =a;
 
+delete_at_tail(head,tail);
+delete_at_tail(head,tail);
 print_forward(head);
-print_prev(tail);
+
 
 return 0;
 }
