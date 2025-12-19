@@ -4,14 +4,14 @@ using namespace std;
 class Node
 {
 public:
-    int val;    // data input or fixed assign
+    int val; // data input or fixed assign
     Node *next;
-    Node* prev; // node er addrese
+    Node *prev; // node er addrese
     Node(int val)
     {
         this->val = val;
         this->next = NULL;
-        this->prev =NULL;
+        this->prev = NULL;
     }
 };
 void print_forward(Node *head)
@@ -45,7 +45,7 @@ int main()
     Node *head = NULL;
     Node *tail = NULL;
     Node *head2 = NULL;
-    Node* tail2 = NULL;
+    Node *tail2 = NULL;
     while (true)
     {
         int val;
@@ -56,8 +56,8 @@ int main()
         }
         insert_at_tail(head, tail, val);
     }
-    //2nd input
-      while (true)
+    // 2nd input
+    while (true)
     {
         int val;
         cin >> val;
@@ -69,13 +69,28 @@ int main()
     }
     // print_forward(head);
     // print_forward(head2);
-    if (head == head2)
+    Node *t1 = head;
+    Node *t2 = head2;
+    bool same = true;
+
+    while (t1 != NULL && t2 != NULL)
     {
-        cout <<"YES";
+        if (t1->val != t2->val)
+        {
+            same = false;
+            break;
+        }
+        t1 = t1->next;
+        t2 = t2->next;
     }
-    else 
-    {
+
+    if (t1 != NULL || t2 != NULL)
+        same = false;
+
+    if (same)
+        cout << "YES";
+    else
         cout << "NO";
-    }
+
     return 0;
 }
